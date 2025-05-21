@@ -17,7 +17,7 @@ return ("Détail du flux RSS demandé : " + texte);
 public String getTest(@RequestParam(value = "nb") int guid, @RequestParam(value = "search") String titre) {
 	return "Test :<br>guid = " + guid + "<br>titre = " + titre;
 }
-@RequestMapping(value = "/xml", produces = MediaType.APPLICATION_XML_VALUE)
+@RequestMapping(value = "/feed", produces = MediaType.APPLICATION_XML_VALUE)
 public @ResponseBody Item getXML() {
     return new Item("12345678", "Test item", "2022-05-01T11:22:33");
 }
