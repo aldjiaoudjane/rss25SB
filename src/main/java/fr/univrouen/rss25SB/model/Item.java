@@ -1,57 +1,95 @@
 package fr.univrouen.rss25SB.model;
 
+import java.time.OffsetDateTime;
+import java.util.List;
+
+import fr.univrouen.rss25SB.adapters.OffsetDateTimeAdapter;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElements;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@XmlRootElement(name = "item")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@Entity
+@Table(name = "item")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Item {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @XmlElement(namespace = "http://univ.fr/rss25", required = true)
     private String guid;
+
+    @XmlElement(namespace = "http://univ.fr/rss25", required = true)
     private String title;
-    private String published;
 
-    @XmlAttribute
-    public String getGuid() {
-        return guid;
-    }
+    // Relations JPA cachées à JAXB
+    @XmlTransient
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id")
+    private List<Category> category;
 
-    public void setGuid(String guid) {
-        this.guid = guid;
-    }
+    @XmlElement(namespace = "http://univ.fr/rss25")
+    @XmlJavaTypeAdapter(OffsetDateTimeAdapter.class)
+    private OffsetDateTime published;
 
-    @XmlElement
-    public String getTitle() {
-        return title;
-    }
+    @XmlElement(namespace = "http://univ.fr/rss25")
+    @XmlJavaTypeAdapter(OffsetDateTimeAdapter.class)
+    private OffsetDateTime updated;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @XmlTransient
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
-    @XmlElement
-    public String getPublished() {
-        return published;
-    }
+    @XmlTransient
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "content_id")
+    private Content content;
 
-    public void setPublished(String published) {
-        this.published = published;
-    }
+    @XmlTransient
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id")
+    private List<PersonType> authorsAndContributors;
 
-    public Item(String guid, String title, String published) {
-        this.guid = guid;
-        this.title = title;
-        this.published = published;
-    }
+    
+    // Getters / Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Item() {
-    }
+    public String getGuid() { return guid; }
+    public void setGuid(String guid) { this.guid = guid; }
 
-    @Override
-    public String toString() {
-        return "Article : " + title + "\n(" + guid + ") Le = " + published;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public List<Category> getCategory() { return category; }
+    public void setCategory(List<Category> category) { this.category = category; }
+
+    public OffsetDateTime getPublished() { return published; }
+    public void setPublished(OffsetDateTime published) { this.published = published; }
+
+    public OffsetDateTime getUpdated() { return updated; }
+    public void setUpdated(OffsetDateTime updated) { this.updated = updated; }
+
+    public Image getImage() { return image; }
+    public void setImage(Image image) { this.image = image; }
+
+    public Content getContent() { return content; }
+    public void setContent(Content content) { this.content = content; }
+
+    public List<PersonType> getAuthorsAndContributors() { return authorsAndContributors; }
+    public void setAuthorsAndContributors(List<PersonType> authorsAndContributors) { this.authorsAndContributors = authorsAndContributors; }
 }
