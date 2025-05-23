@@ -4,8 +4,19 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 import fr.univrouen.rss25SB.adapters.OffsetDateTimeAdapter;
-import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
@@ -17,18 +28,16 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     @XmlElement(namespace = "http://univ.fr/rss25", required = true)
     private String guid;
 
-    @Column(nullable = false)
     @XmlElement(namespace = "http://univ.fr/rss25", required = true)
     private String title;
 
     @XmlTransient
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "item_id")
-    private List<Category> categories;
+    private List<Category> category;
 
     @XmlElement(namespace = "http://univ.fr/rss25")
     @XmlJavaTypeAdapter(OffsetDateTimeAdapter.class)
@@ -39,24 +48,32 @@ public class Item {
     private OffsetDateTime updated;
 
     @XmlTransient
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
 
     @XmlTransient
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "content_id")
     private Content content;
 
     @XmlTransient
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "item_id")
     private List<PersonType> authorsAndContributors;
 
-    // Constructeur par défaut requis par JPA
-    public Item() {}
+    
+    public Item() {
+    }
 
-    // Getters / Setters
+    
+    public Item(String title, String guid, List<Category> category) {
+        this.title = title;
+        this.guid = guid;
+        this.category = category;
+    }
+
+   
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -66,8 +83,8 @@ public class Item {
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 
-    public List<Category> getCategories() { return categories; }
-    public void setCategories(List<Category> categories) { this.categories = categories; }
+    public List<Category> getCategory() { return category; }
+    public void setCategory(List<Category> category) { this.category = category; }
 
     public OffsetDateTime getPublished() { return published; }
     public void setPublished(OffsetDateTime published) { this.published = published; }
@@ -82,7 +99,7 @@ public class Item {
     public void setContent(Content content) { this.content = content; }
 
     public List<PersonType> getAuthorsAndContributors() { return authorsAndContributors; }
-    public void setAuthorsAndContributors(List<PersonType> authorsAndContributors) {
-        this.authorsAndContributors = authorsAndContributors;
+    public void setAuthorsAndContributors(List<PersonType> authorsAndContributors) { this.authorsAndContributors = authorsAndContributors; }
+
     }
 }
