@@ -62,18 +62,15 @@ public class Item {
     @JoinColumn(name = "item_id")
     private List<PersonType> authorsAndContributors;
 
-    
     public Item() {
     }
 
-    
     public Item(String title, String guid, List<Category> category) {
         this.title = title;
         this.guid = guid;
         this.category = category;
     }
 
-   
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -99,7 +96,7 @@ public class Item {
     public void setContent(Content content) { this.content = content; }
 
     public List<PersonType> getAuthorsAndContributors() { return authorsAndContributors; }
-    public void setAuthorsAndContributors(List<PersonType> authorsAndContributors) { this.authorsAndContributors = authorsAndContributors; }
-
+    public void setAuthorsAndContributors(List<PersonType> authorsAndContributors) {
+        this.authorsAndContributors = authorsAndContributors;
     }
 }
