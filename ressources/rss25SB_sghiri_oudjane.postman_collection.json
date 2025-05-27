@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "b51c10f1-e2a8-4f8a-a6dc-c4df50fa9557",
+		"name": "rss25SB_sghiri_oudjane",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45258542",
+		"_collection_link": "https://aldjia-5879466.postman.co/workspace/aldjia's-Workspace~cc29c3ce-5297-4785-82f9-22f1591447ec/collection/45258542-b51c10f1-e2a8-4f8a-a6dc-c4df50fa9557?action=share&source=collection_link&creator=45258542"
+	},
+	"item": [
+		{
+			"name": "insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<feed xmlns=\"http://univ.fr/rss25\" version=\"25\" lang=\"fr\">\r\n    <title>Test Flux</title>\r\n    <pubDate>2025-05-23T15:00:00Z</pubDate>\r\n    <copyright>2025 Test</copyright>\r\n    <link rel=\"self\" type=\"application/xml\" href=\"http://example.com/rss25\"/>\r\n\r\n    <item>\r\n        <guid>http://example.com/test/888</guid>\r\n        <title>TestArticle123</title>\r\n        <category term=\"informatique\" />\r\n        <published>2025-05-23T15:05:00Z</published>\r\n        <content type=\"text\">Contenu de test</content>\r\n        <author>\r\n            <name>JohnDoe</name>\r\n        </author>\r\n    </item>\r\n</feed>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rss25SB/insert",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "help",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/help",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"help"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "accueil",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Liste synthétique des articles (XML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rss25SB/resume/xml",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"resume",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Liste synthétique des articles (HTML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rss25SB/resume/html",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"resume",
+						"html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Détail d'un article (XML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rss25SB/resume/xml/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"resume",
+						"xml",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Détail d'un article (HTML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rss25SB/html/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"html",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supprime un article",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rss25SB/delete/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rss25SB",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

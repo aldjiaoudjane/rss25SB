@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:feed xmlns:p="http://univ.fr/rss25"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://univ.fr/rss25 rss25.tp1.xsd"
+        lang="fr" version="25">
+
+    <p:title>version minimale</p:title>
+    <p:pubDate>2025-02-26T11:11:08Z</p:pubDate>
+    <p:copyright>Monde</p:copyright>
+
+    <p:link rel="self" type="application/rss+xml" href="http://univfr/rssxml"/>
+
+    <p:item>
+        <p:guid>http://univfr/articles/123</p:guid>
+        <p:title>Article 50</p:title>
+        <p:category term="Informatique"/>
+        <p:published>2025-01-10T10:00:00Z</p:published>
+        <p:content type="text">un nouveau article</p:content>
+        <p:author>
+            <p:name>auteur</p:name>
+        </p:author>
+    </p:item>
+
+</p:feed>

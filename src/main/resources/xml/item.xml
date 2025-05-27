@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<item>
-  <guid>87654321-4321-4321-4321-210987654321</guid>
-  <title>Mon second article</title>
-  <published>2022-04-06T10:30:00</published>
-</item>
+<feed xmlns="http://univ.fr/rss25" version="25" lang="fr">
+  <title>Flux Complet</title>
+  <pubDate>2025-05-27T11:00:00Z</pubDate>
+  <copyright>Droits complets 2025</copyright>
+
+  <link rel="self" type="application/xml" href="http://example.com/rss25/complet"/>
+  <link rel="alternate" type="text/html" href="http://example.com/rss25/html"/>
+
+  <item>
+    <guid>http://example.com/article/100</guid>
+    <title>Article Complet 1</title>
+    <category term="technologie"/>
+    <category term="actualité"/>
+    <published>2025-05-27T11:10:00Z</published>
+    <image type="PNG" href="http://example.com/images/img1.png" alt="Image de l'article" length="12345"/>
+    <content type="html" src="http://example.com/content/article100.html">Résumé HTML</content>
+    <author>
+      <name>Jane Doe</name>
+      <email>jane.doe@example.com</email>
+      <uri>http://example.com/janedoe</uri>
+    </author>
+    <contributor>
+      <name>John Contributor</name>
+      <email>john.contrib@example.com</email>
+      <uri>http://example.com/john</uri>
+    </contributor>
+  </item>
+
+  <item>
+    <guid>http://example.com/article/101</guid>
+    <title>Article Complet 2</title>
+    <category term="science"/>
+    <updated>2025-05-27T11:20:00Z</updated>
+    <image type="JPEG" href="http://example.com/images/img2.jpg" alt="Image secondaire"/>
+    <content type="text">Texte brut de l'article</content>
+    <author>
+      <name>Alex Writer</name>
+    </author>
+  </item>
+</feed>

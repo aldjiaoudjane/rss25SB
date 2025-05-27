@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:feed xmlns:p="http://univ.fr/rss25"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://univ.fr/rss25 rss25.tp1.xsd"
+        lang="fr" version="25">
+
+    <p:title>Physique Toute  actualite sur Le Monde fr</p:title>
+    <p:pubDate>2025-02-26T11:11:08Z</p:pubDate>
+    <p:copyright>Le Monde</p:copyright>
+
+    <p:link rel="self" type="application/rss+xml" href="http://univfr/rssxml"/>
+
+    <p:item>
+        <p:guid>http://univfr/articles/1</p:guid>
+        <p:title>Article 2</p:title>
+        <p:category term="Informatique"/>
+        <p:published>2025-01-10T10:00:00Z</p:published>
+
+        <p:image type="JPEG" href="http://univfr/images/image1.jpg" alt="Illustration" length="1024"/>
+        <p:content type="text">Ceci est le nouveau contenu de l article</p:content>
+
+        <p:author>
+            <p:name>aldjia oudjane</p:name>
+            <p:email>aldjiaoudjane@univ.fr</p:email>
+            <p:uri>http://univfr/auteurs</p:uri>
+        </p:author>
+        <p:contributor>
+            <p:name>arij sghiri</p:name>
+            <p:email>arijsghiri@univ.fr</p:email>
+            <p:uri>http://univfr/contributor</p:uri>
+        </p:contributor>
+    </p:item>
+
+    <p:item>
+        <p:guid>http://univfr/articles/820</p:guid>
+        <p:title>Ordinateurs quantiques Microsoft annonce une avancee majeure</p:title>
+        <p:category term="Quantique"/>
+        <p:updated>2025-03-08T12:00:00Z</p:updated>
+
+        <p:image type="JPEG" href="imagesquantiquejpg" alt="Image ordinateur quantique" length="1024"/>
+        <p:content type="text">Microsoft avance sur la réalisation d un ordinateur quantique révolutionnaire</p:content>
+
+        <p:author>
+            <p:name>John Brecher</p:name>
+            <p:email>johnbrecher@univfr</p:email>
+            <p:uri>http://univfr/auteurs</p:uri>
+        </p:author>
+    </p:item>
+</p:feed>  
